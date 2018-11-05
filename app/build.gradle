@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+//mob插件
+apply plugin: 'com.mob.sdk'
+//在MobSDK的拓展中注册SMSSDM的相关信息
+MobSDK {
+    appKey "2893387ac6ea5"
+    appSecret " 1ee290da89ce3bb3376e6df1a70a1d10"
+    SMSSDK {}
+}
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.thousand.petdog"
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //butterknife框架集成
+    implementation 'com.jakewharton:butterknife:9.0.0-rc1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+    //brvah框架集成
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    //litepal数据库集成
+    implementation 'org.litepal.android:java:3.0.0'
+    //recyclerview集成
+
+    //circleImageView集成
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    //mob集成
+  implementation 'com.mob.sdk:MobSDK:+'
+}
