@@ -49,8 +49,7 @@ public class RegisterActivity extends Activity {
         Context context = getApplicationContext();
 // 启动短信验证sdk
         //初始化
-
-        MobSDK.init(this);
+        MobSDK.init(this,"2893387ac6ea5"," 1ee290da89ce3bb3376e6df1a70a1d10");
 
         EventHandler eventHandler = new EventHandler() {
             @Override

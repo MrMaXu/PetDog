@@ -1,12 +1,5 @@
 apply plugin: 'com.android.application'
-//mob插件
-apply plugin: 'com.mob.sdk'
-//在MobSDK的拓展中注册SMSSDM的相关信息
-MobSDK {
-    appKey "2893387ac6ea5"
-    appSecret " 1ee290da89ce3bb3376e6df1a70a1d10"
-    SMSSDK {}
-}
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -39,9 +32,12 @@ dependencies {
     //litepal数据库集成
     implementation 'org.litepal.android:java:3.0.0'
     //recyclerview集成
-
     //circleImageView集成
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     //mob集成
-  implementation 'com.mob.sdk:MobSDK:+'
+    // implementation 'com.mob.sdk:MobSDK:+'
+    implementation files('libs/MobCommons-2018.1011.1129.jar')
+    implementation files('libs/MobTools-2018.1009.1056.jar')
+    implementation files('libs/SDKWrapper-2018.0801.1824.jar')
+    implementation files('libs/SMSSDK-3.2.1.jar')
 }
