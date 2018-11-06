@@ -3,20 +3,28 @@ package com.thousand.petdog;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 
 import com.mob.MobSDK;
+import com.thousand.petdog.activity.MapActivity;
+import com.thousand.petdog.activity.MemoryDayActivity;
 import com.thousand.petdog.fragement.FindFragment;
 import com.thousand.petdog.fragement.IndexFragment;
 import com.thousand.petdog.fragement.MyFragment;
 import com.thousand.petdog.fragement.ShopFragment;
 
+import java.util.Map;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
 描述：主页
@@ -37,6 +45,9 @@ public class MainActivity extends Activity  implements View.OnClickListener{
     private ShopFragment fg3;
     private MyFragment fg4;
     private FragmentManager fManager;
+   //测试按钮 跳到纪念日
+    @BindView(R.id.btn_to_memday)
+    Button btn_to_memday;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +60,17 @@ public class MainActivity extends Activity  implements View.OnClickListener{
 
 
 
+    }
+
+    @OnClick(R.id.btn_to_memday)
+    public void to_memday(){
+        Intent intent=new Intent(MainActivity.this,MemoryDayActivity.class);
+       startActivity(intent);
+    }
+    @OnClick(R.id.btn_to_map)
+    public void to_map(){
+        Intent intent=new Intent(MainActivity.this,MapActivity.class);
+        startActivity(intent);
     }
     //UI组件初始化与事件绑定
     private void bindViews() {

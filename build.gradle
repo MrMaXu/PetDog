@@ -5,7 +5,12 @@ buildscript {
     repositories {
         google()
         jcenter()
-
+        //高德地图
+        allprojects {
+            repositories {
+                jcenter() // 或者 mavenCentral()
+            }
+        }
         }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'

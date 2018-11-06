@@ -5,14 +5,14 @@ import android.os.Bundle;
 
 import com.thousand.petdog.R;
 /**
- *  Activity：登录模块
- *  描述：
+ *  Activity：秘密
+ *  描述：第2小块儿：记录宠物的日常照片
  */
-public class LoginActivity extends Activity {
+public class SecretActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_secret);
     }
 }

@@ -4,15 +4,17 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.thousand.petdog.R;
+
+
 /**
- *  Activity：登录模块
- *  描述：
+ *  Activity：行为语言
+ *  描述：第4小块儿：宠物的行为语言，显示宠物狗常见行为动作和意义
  */
-public class LoginActivity extends Activity {
+public class ActionLauguageActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_action_lauguage);
     }
 }

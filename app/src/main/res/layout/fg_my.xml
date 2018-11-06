@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".activity.MapActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="地图"
+        android:textSize="50px"
+        android:layout_gravity="center"
+        android:gravity="center"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+        <EditText
 
-        <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/et_search"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:hint="搜索"
+
+            android:background="@drawable/round_border"/>
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:textSize="40dp"
-            android:text="我的模块"/>
+            android:text="搜索"/>
     </LinearLayout>
+    <com.amap.api.maps.MapView
 
+        android:id="@+id/map"
 
-</android.support.constraint.ConstraintLayout>
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"/>
+</LinearLayout>

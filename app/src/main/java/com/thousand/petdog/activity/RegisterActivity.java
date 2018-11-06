@@ -27,7 +27,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
-
+/**
+ *  Activity：注册模块
+ *  描述：手机号注册
+ */
 public class RegisterActivity extends Activity {
     @BindView(R.id.verCode)
     EditText verCode;

@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="com.thousand.petdog">
-<!--短信权限-->
+
+
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!--允许程序读写手机状态和身份-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--允许程序设置内置sd卡的写权限-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--允许程序获取网络状态-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--允许程序访问WiFi网络信息-->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--允许程序打开网络套接字-->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
-
     <application
+
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
+        android:configChanges="keyboardHidden|orientation|screenSize"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:windowSoftInputMode="stateHidden|adjustResize"
+        android:windowSoftInputMode="stateHidden|adjustResize">
+       <!--地图-->
+        <meta-data android:name="PetDog_Map" android:value="b5f58c9abe9ea3a41b5410e2c83c9567">
 
-        >
+        </meta-data>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +45,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.RegisterActivity"></activity>
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.MemoryDayActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity.SecretActivity" />
+        <activity android:name=".activity.LiaogouActivity" />
+        <activity android:name=".activity.ActionLauguageActivity" />
+        <activity android:name=".activity.TrainActicalActivity" />
+        <activity android:name=".activity.MapActivity" />
+        <activity android:name=".activity.SickActivity" />
+        <activity android:name=".activity.HealthActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,3 @@
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,19 +16,18 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:textSize="18sp"
+            android:text="信息"
             android:textColor="@color/text_topbar"
-            android:text="信息"/>
+            android:textSize="18sp" />
 
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
-            android:background="@color/div_white"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:background="@color/div_white" />
 
     </RelativeLayout>
-
 
 
     <LinearLayout
@@ -46,8 +44,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/tab_menu_bg"
-            android:drawablePadding="3dp"
             android:drawableTop="@drawable/tab_menu_channel"
+            android:drawablePadding="3dp"
             android:gravity="center"
             android:padding="5dp"
 
@@ -60,8 +58,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/tab_menu_bg"
-            android:drawablePadding="3dp"
             android:drawableTop="@drawable/tab_menu_message"
+            android:drawablePadding="3dp"
             android:gravity="center"
             android:padding="5dp"
 
@@ -74,8 +72,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/tab_menu_bg"
-            android:drawablePadding="3dp"
             android:drawableTop="@drawable/tab_menu_better"
+            android:drawablePadding="3dp"
             android:gravity="center"
             android:padding="5dp"
             android:text="3"
@@ -88,13 +86,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/tab_menu_bg"
-            android:drawablePadding="3dp"
             android:drawableTop="@drawable/tab_menu_setting"
+            android:drawablePadding="3dp"
             android:gravity="center"
             android:padding="5dp"
             android:text="4"
             android:textColor="@drawable/tab_menu_text"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -102,16 +100,36 @@
         android:id="@+id/div_tab_bar"
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:background="@color/div_white"
-        android:layout_above="@id/ly_tab_bar"/>
+        android:layout_above="@id/ly_tab_bar"
+        android:background="@color/div_white" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_to_memday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="50dp"
+            android:text="跳转到纪念日"
+            android:textSize="30px" />
+
+        <Button
+            android:id="@+id/btn_to_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跳转到地图"
+            android:textSize="30px" />
+    </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/ly_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ly_top_bar"
         android:layout_above="@id/div_tab_bar"
-        android:id="@+id/ly_content">
+        android:layout_below="@id/ly_top_bar">
 
     </FrameLayout>
 

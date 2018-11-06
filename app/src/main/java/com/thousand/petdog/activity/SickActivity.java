@@ -4,15 +4,16 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.thousand.petdog.R;
+
 /**
- *  Activity：登录模块
- *  描述：
+ *  Activity：生病
+ *  描述：第7小块儿：查询相关病种
  */
-public class LoginActivity extends Activity {
+public class SickActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_sick);
     }
 }
