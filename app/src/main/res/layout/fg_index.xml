@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <LinearLayout
+        android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -20,5 +23,12 @@
             android:text="狗狗已经健康成长X天"/>
     </LinearLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_fg_index"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-</android.support.constraint.ConstraintLayout>
+        >
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
