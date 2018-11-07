@@ -1,6 +1,7 @@
 package com.thousand.petdog.fragement;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,12 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.thousand.petdog.R;
+import com.thousand.petdog.activity.ActionLauguageActivity;
+import com.thousand.petdog.activity.HealthActivity;
+import com.thousand.petdog.activity.LiaogouActivity;
+import com.thousand.petdog.activity.MemoryDayActivity;
+import com.thousand.petdog.activity.SecretActivity;
+import com.thousand.petdog.activity.TrainActicalActivity;
 import com.thousand.petdog.adapter.GridItemAdapter;
 import com.thousand.petdog.bean.NavgationItem;
 
@@ -56,16 +63,46 @@ public class IndexFragment extends Fragment {
         gridItemAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(getActivity(), "onItemClick" + position, Toast.LENGTH_SHORT).show();
+                switch (position){
+                    case 0:
+                        startActivity(new Intent(getActivity(),MemoryDayActivity.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(getActivity(),SecretActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(getActivity(),LiaogouActivity.class));
+                        break;
+                    case 3:
+                        startActivity(new Intent(getActivity(),ActionLauguageActivity.class));
+                        break;
+                    case 4:
+                        startActivity(new Intent(getActivity(),TrainActicalActivity.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(getActivity(),HealthActivity.class));
+                        break;
+                    case 6:
+                        startActivity(new Intent(getActivity(),MemoryDayActivity.class));
+                        break;
+                    case 7:
+                        startActivity(new Intent(getActivity(),MemoryDayActivity.class));
+                        break;
+                }
             }
         });
         rvFgIndex.setAdapter(gridItemAdapter);
     }
 
     private void initList() {
-        for (int i=0;i<8;i++){
-            mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"测试"));
-        }
+        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"纪念日"));
+        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"秘密"));
+        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"撩汪"));
+        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"动作"));
+        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"训练"));
+        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"店面"));
+        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"百科"));
+        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"数据"));
     }
 
     @Override

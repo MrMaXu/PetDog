@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PetDog</string>
+    <string name="memory_add_add">添加纪念日</string>
 </resources>

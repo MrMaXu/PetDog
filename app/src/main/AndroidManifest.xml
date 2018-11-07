@@ -2,19 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.thousand.petdog">
 
-
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <!--允许程序读写手机状态和身份-->
+    <!-- 允许程序读写手机状态和身份 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--允许程序设置内置sd卡的写权限-->
+    <!-- 允许程序设置内置sd卡的写权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--允许程序获取网络状态-->
+    <!-- 允许程序获取网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--允许程序访问WiFi网络信息-->
+    <!-- 允许程序访问WiFi网络信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!--允许程序打开网络套接字-->
+    <!-- 允许程序打开网络套接字 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
@@ -23,7 +22,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:configChanges="keyboardHidden|orientation|screenSize"
@@ -33,10 +31,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="stateHidden|adjustResize">
-       <!--地图-->
-        <meta-data android:name="PetDog_Map" android:value="b5f58c9abe9ea3a41b5410e2c83c9567">
 
-        </meta-data>
+        <!-- 地图 -->
+        <meta-data
+            android:name="PetDog_Map"
+            android:value="b5f58c9abe9ea3a41b5410e2c83c9567"></meta-data>
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -48,7 +47,9 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.MemoryDayActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.sub_activity.AddMemoryActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> >
         <activity android:name=".activity.SecretActivity" />
         <activity android:name=".activity.LiaogouActivity" />
         <activity android:name=".activity.ActionLauguageActivity" />
@@ -60,7 +61,8 @@
 
         </activity>
         <activity android:name=".activity.SickActivity" />
-        <activity android:name=".activity.HealthActivity"></activity>
+        <activity android:name=".activity.HealthActivity" />
+
     </application>
 
 </manifest>
