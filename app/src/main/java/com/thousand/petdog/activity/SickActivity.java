@@ -1,47 +1,47 @@
 package com.thousand.petdog.activity;
 
-import android.app.Activity;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.widget.TextView;
 
-import com.gjiazhe.wavesidebar.WaveSideBar;
 import com.thousand.petdog.R;
-import com.thousand.petdog.pinyin.ClearEditText;
-import com.thousand.petdog.pinyin.PinyinComparator;
-import com.thousand.petdog.pinyin.PinyinUtils;
-import com.thousand.petdog.pinyin.SortAdapter;
-import com.thousand.petdog.pinyin.SortModel;
-import com.thousand.petdog.pinyin.TitleItemDecoration;
+import com.thousand.petdog.adapter.SortAdapter;
+import com.thousand.petdog.model.SortModel;
+import com.thousand.petdog.util.ClearEditText;
+import com.thousand.petdog.util.PinyinComparator;
+import com.thousand.petdog.util.PinyinUtils;
+import com.thousand.petdog.view.SideBar;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 /**
  *  Activity：生病
  *  描述：第7小块儿：查询相关病种
  */
 public class SickActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
     private RecyclerView mRecyclerView;
-    private WaveSideBar mSideBar;
-    private SortAdapter mAdapter;
+    private SideBar sideBar;
+    private TextView dialog;
+    private SortAdapter adapter;
     private ClearEditText mClearEditText;
-    private LinearLayoutManager manager;
+    LinearLayoutManager manager;
 
-    private List<SortModel> mDateList;
-    private TitleItemDecoration mDecoration;
+    private List<SortModel> SourceDateList;
 
     /**
      * 根据拼音来排列RecyclerView里面的数据类
      */
-    private PinyinComparator mComparator;
+    private PinyinComparator pinyinComparator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,39 +50,44 @@ public class SickActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        mComparator = new PinyinComparator();
+        pinyinComparator = new PinyinComparator();
 
-        mSideBar = (WaveSideBar) findViewById(R.id.sideBar);
+        sideBar = (SideBar) findViewById(R.id.sideBar);
+        dialog = (TextView) findViewById(R.id.dialog);
+        sideBar.setTextView(dialog);
 
         //设置右侧SideBar触摸监听
-        mSideBar.setOnTouchLetterChangeListener(new WaveSideBar.OnTouchLetterChangeListener() {
+        sideBar.setOnTouchingLetterChangedListener(new SideBar.OnTouchingLetterChangedListener() {
+
             @Override
-            public void onLetterChange(String letter) {
+            public void onTouchingLetterChanged(String s) {
                 //该字母首次出现的位置
-                int position = mAdapter.getPositionForSection(letter.charAt(0));
+                int position = adapter.getPositionForSection(s.charAt(0));
                 if (position != -1) {
                     manager.scrollToPositionWithOffset(position, 0);
                 }
+
             }
         });
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.rv);
-        mDateList = filledData(getResources().getStringArray( R.array.date));
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        SourceDateList = filledData(getResources().getStringArray(R.array.date));
 
         // 根据a-z进行排序源数据
-        Collections.sort(mDateList, mComparator);
-
-        //RecyclerView设置manager
+        Collections.sort(SourceDateList, pinyinComparator);
+        //RecyclerView社置manager
         manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(manager);
-        mAdapter = new SortAdapter(this, mDateList);
-        mRecyclerView.setAdapter(mAdapter);
-        mDecoration = new TitleItemDecoration(this, mDateList);
-        //如果add两个，那么按照先后顺序，依次渲染。
-        mRecyclerView.addItemDecoration(mDecoration);
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(SickActivity.this, DividerItemDecoration.VERTICAL));
-
+        adapter = new SortAdapter(this, SourceDateList);
+        mRecyclerView.setAdapter(adapter);
+        //item点击事件
+        /*adapter.setOnItemClickListener(new SortAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(MainActivity.this, ((SortModel)adapter.getItem(position)).getName(),Toast.LENGTH_SHORT).show();
+            }
+        });*/
 
         mClearEditText = (ClearEditText) findViewById(R.id.filter_edit);
 
@@ -146,10 +151,10 @@ public class SickActivity extends AppCompatActivity {
         List<SortModel> filterDateList = new ArrayList<>();
 
         if (TextUtils.isEmpty(filterStr)) {
-            filterDateList = filledData(getResources().getStringArray(R.array.date));
+            filterDateList = SourceDateList;
         } else {
             filterDateList.clear();
-            for (SortModel sortModel : mDateList) {
+            for (SortModel sortModel : SourceDateList) {
                 String name = sortModel.getName();
                 if (name.indexOf(filterStr.toString()) != -1 ||
                         PinyinUtils.getFirstSpell(name).startsWith(filterStr.toString())
@@ -163,9 +168,8 @@ public class SickActivity extends AppCompatActivity {
         }
 
         // 根据a-z进行排序
-        Collections.sort(filterDateList, mComparator);
-        mDateList.clear();
-        mDateList.addAll(filterDateList);
-        mAdapter.notifyDataSetChanged();
+        Collections.sort(filterDateList, pinyinComparator);
+        adapter.updateList(filterDateList);
     }
+
 }

@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.UiSettings;
 
@@ -78,11 +79,14 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         mMapView = (MapView) findViewById(R.id.map);
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
         mMapView.onCreate(savedInstanceState);
+        //放大18级
+        mMapView.getMap().moveCamera(CameraUpdateFactory.zoomTo(18));
         //初始化地图控制器对象
         if (aMap == null) {
             aMap = mMapView.getMap();
         }
-        //初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
+        //初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);
+        // 连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
 
         myLocationStyle = new MyLocationStyle();
         //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
@@ -221,7 +225,7 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         });
 
     }
-
+//解析查询结果
     @Override
     public void onPoiSearched(PoiResult poiResult, int i) {
         data.clear();
