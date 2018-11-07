@@ -49,17 +49,13 @@
         <activity android:name=".activity.MemoryDayActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".activity.sub_activity.AddMemoryActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".activity.SecretActivity" />
         <activity android:name=".activity.LiaogouActivity" />
         <activity android:name=".activity.ActionLauguageActivity" />
         <activity android:name=".activity.TrainActicalActivity" />
-
-        <activity android:name=".activity.MapActivity" >
-            <service android:name="com.amap.api.location.APSService"></service>
-
-
-        </activity>
+        <activity android:name=".activity.MapActivity" ></activity>
+        <service android:name="com.amap.api.location.APSService"></service>
         <activity android:name=".activity.SickActivity" />
         <activity android:name=".activity.HealthActivity" />
 
