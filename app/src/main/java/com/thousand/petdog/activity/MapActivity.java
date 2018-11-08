@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
@@ -59,19 +62,23 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
     private PoiSearch poiSearch;
     private SearchAddressAdapter adapter;
     private ArrayList<AddressBean> data = new ArrayList<AddressBean>();
+    //声明AMapLocationClient类对象
+    public AMapLocationClient mLocationClient = null;
+    //声明定位回调监听器
+    public AMapLocationListener mLocationListener;
+    //声明AMapLocationClientOption对象
+    public AMapLocationClientOption mLocationOption;
     int page = 0;
-    //    @BindView(R.id.et_search)
-//    EditText et_search;
-//    @BindView(R.id.btn_search)
-//    Button btn_search;
     private EditText et_search;
     private Button btn_search;
+    @BindView(R.id.tv_left_button)
+    Button tv_left_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-
+        ButterKnife.bind(this);
         context = this;
         initView();
         setOnClick();
@@ -91,36 +98,69 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         myLocationStyle = new MyLocationStyle();
         //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
         myLocationStyle.interval(2000);
-        //设置定位蓝点的Style
-        aMap.setMyLocationStyle(myLocationStyle);
-        //默认定位按钮是否显示
-        aMap.getUiSettings().setMyLocationButtonEnabled(true);
-        // 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
-        aMap.setMyLocationEnabled(true);
+
         //实例化UiSettings类对象
         mUiSettings = aMap.getUiSettings();
+
+        //通过aMap对象设置定位数据源的监听
+        //aMap.setLocationSource(m);
+
+        // 可触发定位并显示当前位置
+        aMap.setMyLocationEnabled(true);
+        //定位
+        initLocation();
+        initMapFunction();
+        inputtips.setInputtipsListener(this);
+    }
+
+
+    public void initView() {
+        adapter = new SearchAddressAdapter(context, data);
+        et_search = (EditText) findViewById(R.id.et_search);
+        lv_address = (ListView) findViewById(R.id.lv_address);
+        lv_address.setAdapter(adapter);
+
+    }
+
+    public void initMapFunction() {
         //指南针
         mUiSettings.setCompassEnabled(true);
         //缩放手势
         mUiSettings.setZoomGesturesEnabled(true);
         //滑动手势
         mUiSettings.setScrollGesturesEnabled(true);
-        //通过aMap对象设置定位数据源的监听
-//          aMap.setLocationSource(this);
-        //显示默认的定位按钮
-        //   mUiSettings.setMyLocationButtonEnabled(true);
-        // 可触发定位并显示当前位置
-        //   aMap.setMyLocationEnabled(true);
 
     }
 
-    public void initView() {
-        adapter = new SearchAddressAdapter(context, data);
-        et_search = (EditText) findViewById(R.id.et_search);
+    public void initLocation() {
+        //初始化定位
+        mLocationClient = new AMapLocationClient(getApplicationContext());
+        //显示默认的定位按钮
+        // mUiSettings.setMyLocationButtonEnabled(true);
+        //设置定位回调监听
+        mLocationClient.setLocationListener(mLocationListener);
+        //声明AMapLocationClientOption对象
+        mLocationOption = null;
+        //初始化AMapLocationClientOption对象
+        mLocationOption = new AMapLocationClientOption();
+        //设置定位模式为AMapLocationMode.Battery_Saving，低功耗模式。
+        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Battery_Saving);
+        //获取一次定位结果：//该方法默认为false。
+        mLocationOption.setOnceLocation(true);
+        //获取最近3s内精度最高的一次定位结果：
+        //设置setOnceLocationLatest(boolean b)接口为true，启动定位时SDK会返回最近3s内精度最高的一次定位结果。如果设置其为true，setOnceLocation(boolean b)接口也会被设置为true，反之不会，默认为false。
+        mLocationOption.setOnceLocationLatest(true);
+        //给定位客户端对象设置定位参数
+        mLocationClient.setLocationOption(mLocationOption);
+        //启动定位
+        mLocationClient.startLocation();
 
-        lv_address = (ListView) findViewById(R.id.lv_address);
-        lv_address.setAdapter(adapter);
 
+        //设置定位蓝点的Style
+        aMap.setMyLocationStyle(myLocationStyle);
+
+        // 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
+        aMap.setMyLocationEnabled(true);
     }
 
 
@@ -172,12 +212,14 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         mMapView.onSaveInstanceState(outState);
     }
 
-    //解析返回的结果，获取输入提示返回的信息
+    // 通过回调接口 onGetInputtips 解析返回的结果，获取输入提示返回的信息
+
     @Override
     public void onGetInputtips(List<Tip> list, int i) {
+        if (i == 1000) {//如果输入提示搜索成功
 
+        }
     }
-
 
     private void seach(String address) {
         query = new PoiSearch.Query(address, "", "");
@@ -188,6 +230,7 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         poiSearch.searchPOIAsyn();//调用 PoiSearch 的 searchPOIAsyn() 方法发送请求。
 
         poiSearch.setOnPoiSearchListener(this);
+
 
         //周边检索
         //   poiSearch.setBound(new SearchBound(new LatLonPoint(locationMarker.getPosition().latitude,
@@ -203,6 +246,14 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                String content = charSequence.toString().trim();//获取自动提示输入框的内容
+                inputquery = new InputtipsQuery(content, "");
+                inputquery.setCityLimit(true);//限制在当前城市
+                inputtips = new Inputtips(MapActivity.this, inputquery);//定义一个输入提示对象，传入当前上下文和搜索对象
+                inputtips.setInputtipsListener(MapActivity.this);//设置输入提示查询的监听，实现输入提示的监听方法onGetInputtips()
+                inputtips.requestInputtipsAsyn();//输入查询提示的异步接口实现
+
             }
 
             @Override
@@ -225,7 +276,8 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         });
 
     }
-//解析查询结果
+
+    //解析查询结果
     @Override
     public void onPoiSearched(PoiResult poiResult, int i) {
         data.clear();
@@ -258,9 +310,14 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
     public void onPoiItemSearched(PoiItem poiItem, int i) {
     }
 
+    @OnClick(R.id.tv_left_button)
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.tv_left_button:
+                finish();
+                break;
+
 
         }
     }

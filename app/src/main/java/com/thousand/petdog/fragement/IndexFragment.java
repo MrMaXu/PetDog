@@ -15,10 +15,13 @@ import com.thousand.petdog.R;
 import com.thousand.petdog.activity.ActionLauguageActivity;
 import com.thousand.petdog.activity.HealthActivity;
 import com.thousand.petdog.activity.LiaogouActivity;
+import com.thousand.petdog.activity.MapActivity;
 import com.thousand.petdog.activity.MemoryDayActivity;
 import com.thousand.petdog.activity.SecretActivity;
+import com.thousand.petdog.activity.SickActivity;
 import com.thousand.petdog.activity.TrainActicalActivity;
 import com.thousand.petdog.adapter.GridItemAdapter;
+import com.thousand.petdog.bean.HealthDateItem;
 import com.thousand.petdog.bean.NavgationItem;
 
 import java.util.ArrayList;
@@ -80,13 +83,13 @@ public class IndexFragment extends Fragment {
                         startActivity(new Intent(getActivity(),TrainActicalActivity.class));
                         break;
                     case 5:
-                        startActivity(new Intent(getActivity(),HealthActivity.class));
+                        startActivity(new Intent(getActivity(),MapActivity.class));
                         break;
                     case 6:
-                        startActivity(new Intent(getActivity(),MemoryDayActivity.class));
+                        startActivity(new Intent(getActivity(),SickActivity.class));
                         break;
                     case 7:
-                        startActivity(new Intent(getActivity(),MemoryDayActivity.class));
+                        startActivity(new Intent(getActivity(),HealthDateItem.class));
                         break;
                 }
             }
@@ -100,9 +103,9 @@ public class IndexFragment extends Fragment {
         mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"撩汪"));
         mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"动作"));
         mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"训练"));
-        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"店面"));
-        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"百科"));
-        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"数据"));
+        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"地图"));
+        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"病种百科"));
+        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"健康监控"));
     }
 
     @Override

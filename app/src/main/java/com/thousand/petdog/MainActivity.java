@@ -45,9 +45,7 @@ public class MainActivity extends Activity  implements View.OnClickListener{
     private ShopFragment fg3;
     private MyFragment fg4;
     private FragmentManager fManager;
-   //测试按钮 跳到纪念日
-    @BindView(R.id.btn_to_memday)
-    Button btn_to_memday;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,16 +60,7 @@ public class MainActivity extends Activity  implements View.OnClickListener{
 
     }
 
-    @OnClick(R.id.btn_to_memday)
-    public void to_memday(){
-        Intent intent=new Intent(MainActivity.this,MemoryDayActivity.class);
-       startActivity(intent);
-    }
-    @OnClick(R.id.btn_to_map)
-    public void to_map(){
-        Intent intent=new Intent(MainActivity.this,MapActivity.class);
-        startActivity(intent);
-    }
+
     //UI组件初始化与事件绑定
     private void bindViews() {
         txt_topbar = (TextView) findViewById(R.id.txt_topbar);

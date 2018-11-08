@@ -13,25 +13,14 @@
     android:layout_gravity="center"
     android:gravity="center">
 
-
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_my"
+        android:id="@+id/tb_health"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        app:subtitleTextColor="#ffffff"
-       app:titleTextColor="#ff4040">
+        android:layout_height="?attr/actionBarSize">
 
-        <TextView
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-
-            android:text="健康监控"
-            android:textColor="#ff0000" />
     </android.support.v7.widget.Toolbar>
+
+
 </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,32 +30,35 @@
         android:paddingLeft="40dp">
 
         <TextView
+            android:id="@+id/dog_height"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="130"
-            android:textSize="40dp" />
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/dog_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="130"
+            android:textSize="30dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="130"
-            android:textSize="40dp" />
+            android:textSize="30dp" />
 
         <TextView
+            android:id="@+id/dog_BMI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="130"
-            android:textSize="40dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="130"
-            android:textSize="40dp" />
+            android:textSize="30dp" />
 
 
     </LinearLayout>
@@ -83,39 +75,46 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="身高"
-            android:textSize="30dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="体重"
-            android:textSize="30dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="BMI"
-            android:textSize="30dp" />
+            android:textSize="20dp" />
 
         <TextView
+            android:id="@+id/dog_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="体侧"
-            android:textSize="30dp" />
+            android:text="体温"
+            android:textSize="20dp" />
 
 
     </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
+        android:id="@+id/dog_inputData"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="录入体重"
         android:textColor="#1e90ff"
         android:textSize="30dp" />
-
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#b3b8ff"></View>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -128,7 +127,8 @@
         android:layout_height="1dp"
         android:background="#b3b8ff"></View>
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcv_health"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 </LinearLayout>

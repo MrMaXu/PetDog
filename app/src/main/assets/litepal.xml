@@ -8,5 +8,6 @@
         <mapping class="com.thousand.petdog.model.Dog"></mapping>
         <mapping class="com.thousand.petdog.model.User"></mapping>
         <mapping class="com.thousand.petdog.model.MemoryDay"></mapping>
+        <mapping class="com.thousand.petdog.model.SortModel"></mapping>
     </list>
 </litepal>

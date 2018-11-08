@@ -27,9 +27,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
+
 /**
- *  Activity：注册模块
- *  描述：手机号注册
+ * Activity：注册模块
+ * 描述：手机号注册
  */
 public class RegisterActivity extends Activity {
     @BindView(R.id.verCode)
@@ -50,9 +51,9 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
         Context context = getApplicationContext();
-// 启动短信验证sdk
+        // 启动短信验证sdk
         //初始化
-        MobSDK.init(this,"2893387ac6ea5"," 1ee290da89ce3bb3376e6df1a70a1d10");
+        MobSDK.init(this, "2893387ac6ea5", " 1ee290da89ce3bb3376e6df1a70a1d10");
 
         EventHandler eventHandler = new EventHandler() {
             @Override
@@ -67,8 +68,19 @@ public class RegisterActivity extends Activity {
         SMSSDK.registerEventHandler(eventHandler); // 注册回调监听接口
     }
 
+    @OnClick(R.id.register)
+    public void onClickRegister() {
+        //验证成功，保存手机号，密码
+        User user = new User();
+        user.setPhone(Integer.parseInt(phone.getText().toString()));
+        user.setPassword(password.getText().toString());
+        user.save();
+        // 保存后跳转主界面
+        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 
-    @OnClick({R.id.sendSMS, R.id.register})
+    @OnClick(R.id.sendSMS)
     public void onClickSMS(View v) {
         String phoneNums = phone.getText().toString();
         switch (v.getId()) {
@@ -127,14 +139,7 @@ public class RegisterActivity extends Activity {
                     if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {// 提交验证码成功
                         Toast.makeText(getApplicationContext(), "提交验证码成功",
                                 Toast.LENGTH_SHORT).show();
-                        //验证成功，保存手机号，密码
-                        User user = new User();
-                        user.setPhone(Integer.parseInt(phone.getText().toString()));
-                        user.setPassword(password.getText().toString());
-                        user.save();
-                        // 保存后跳转主界面
-                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                        startActivity(intent);
+
                         Log.e("注册", "成功！");
                         finish();// 成功跳转之后销毁当前页面
 

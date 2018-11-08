@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:text="狗狗已经健康成长X天" />
+
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -29,5 +30,10 @@
         android:layout_height="wrap_content"
 
         ></android.support.v7.widget.RecyclerView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/round_border"
+        />
 
 </LinearLayout>

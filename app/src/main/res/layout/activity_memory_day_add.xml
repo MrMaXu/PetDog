@@ -2,16 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.SecretActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_memday_index"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        >
+        android:layout_height="?attr/actionBarSize">
 
     </android.support.v7.widget.Toolbar>
 
@@ -20,11 +19,11 @@
         android:layout_height="90dp">
 
         <TextView
-            android:gravity="center"
-            android:textSize="24dp"
-            android:text="我们在一起10天了，比心"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="我们在一起10天了，比心"
+            android:textSize="24dp" />
 
     </LinearLayout>
 
