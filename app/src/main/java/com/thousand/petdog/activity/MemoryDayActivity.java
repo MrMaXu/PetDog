@@ -16,6 +16,8 @@ import com.thousand.petdog.activity.sub_activity.AddMemoryActivity;
 import com.thousand.petdog.adapter.MemoryAdapter;
 import com.thousand.petdog.model.MemoryDay;
 
+import org.litepal.LitePal;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +31,7 @@ import butterknife.ButterKnife;
  */
 public class MemoryDayActivity extends AppCompatActivity {
 
-    public static final String MEMORY_ITEM = "memory_item";
+    public static final String MEMORY_DATE = "memory_date";
 
     @BindView(R.id.rv_memory)
     RecyclerView rvMemory;
@@ -48,15 +50,21 @@ public class MemoryDayActivity extends AppCompatActivity {
 
         //返回三角
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        initListData();
+        initListData();         //初始化数据
+        initView();
+
+    }
+
+    private void initView() {
         mLinearLayoutManager = new LinearLayoutManager(this);
         rvMemory.setLayoutManager(mLinearLayoutManager);
         MemoryAdapter memoryAdapter = new MemoryAdapter(R.layout.item_linear_img_text,mMemoryDayList);
+        //点击单项进行修改
         memoryAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Intent intent = new Intent(MemoryDayActivity.this,AddMemoryActivity.class);
-                intent.putExtra("memory_item",mMemoryDayList.get(position));
+                intent.putExtra(MEMORY_DATE,mMemoryDayList.get(position).getDate());        //传递时间值
                 startActivity(intent);
             }
         });
@@ -64,11 +72,13 @@ public class MemoryDayActivity extends AppCompatActivity {
     }
 
     private void initListData() {
-        for (int i = 0; i < 10; i++) {
+        /*for (int i = 0; i < 10; i++) {
             MemoryDay memoryDay = new MemoryDay("test", "测试测试", new Date().getTime());
             memoryDay.setColor(R.color.colorPrimary);
             mMemoryDayList.add(memoryDay);
-        }
+        }*/
+
+        mMemoryDayList = LitePal.findAll(MemoryDay.class);      //数据库中查找MemoryDay所有数据
     }
 
     @Override

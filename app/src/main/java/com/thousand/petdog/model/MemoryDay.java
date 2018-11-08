@@ -1,15 +1,17 @@
 package com.thousand.petdog.model;
 
-import org.litepal.LitePal;
+import org.litepal.crud.LitePalSupport;
 
 import java.io.Serializable;
 
-public class MemoryDay extends LitePal implements Serializable {
+public class MemoryDay extends LitePalSupport implements Serializable {
 
     private String name;
     private String content;
     private long date;
     private int color;
+
+    public MemoryDay(){}
 
     public MemoryDay(String name, String content, long date) {
         this.name = name;

@@ -6,15 +6,14 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.thousand.petdog.R;
 import com.thousand.petdog.model.MemoryDay;
-import com.thousand.petdog.utils.TimeUtils;
+import com.thousand.petdog.util.TimeUtils;
 
 import java.util.Date;
 import java.util.List;
 
-import static com.thousand.petdog.utils.TimeUtils.DATE_DAY;
-import static com.thousand.petdog.utils.TimeUtils.DATE_MONTH;
-import static com.thousand.petdog.utils.TimeUtils.DATE_YEAR;
-import static com.thousand.petdog.utils.TimeUtils.getTimeInterval;
+import static com.thousand.petdog.util.TimeUtils.DATE_MONTH;
+import static com.thousand.petdog.util.TimeUtils.DATE_YEAR;
+import static com.thousand.petdog.util.TimeUtils.getTimeInterval;
 
 public class MemoryAdapter extends BaseQuickAdapter<MemoryDay,BaseViewHolder> {
     public MemoryAdapter(int layoutResId, @Nullable List<MemoryDay> data) {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.sub_activity.AddMemoryActivity">
 
     <android.support.v7.widget.Toolbar
@@ -13,5 +14,56 @@
         >
 
     </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_background"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="@color/colorPrimary"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/et_memory_content"
+            android:layout_gravity="center_vertical"
+            android:hint="点击输入纪念日内容"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginLeft="@dimen/dp_10"
+                style="@style/settings_item_arrow_left"
+                android:id="@+id/personal_icon_01"
+                android:src="@drawable/ic_access_time_black_24dp" />
+
+            <TextView
+                android:id="@+id/tv_memory_time"
+                style="@style/item_text_common"
+                android:layout_toRightOf="@id/personal_icon_01"
+                android:text="点击选择时间" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
 
 </LinearLayout>

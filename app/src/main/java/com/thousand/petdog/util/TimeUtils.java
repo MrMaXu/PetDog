@@ -1,4 +1,4 @@
-package com.thousand.petdog.utils;
+package com.thousand.petdog.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
