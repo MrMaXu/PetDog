@@ -57,7 +57,9 @@
             android:name=".activity.sub_activity.AddMemoryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".activity.SecretActivity" />
-        <activity android:name=".activity.LiaogouActivity" />
+        <activity android:name=".activity.LiaogouActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            />
         <activity
             android:name=".activity.ActionLauguageActivity"
             />

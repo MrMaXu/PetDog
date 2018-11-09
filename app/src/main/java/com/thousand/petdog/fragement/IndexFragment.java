@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.thousand.petdog.R;
 import com.thousand.petdog.activity.ActionLauguageActivity;
+import com.thousand.petdog.activity.HealthActivity;
 import com.thousand.petdog.activity.LiaogouActivity;
 import com.thousand.petdog.activity.MapActivity;
 import com.thousand.petdog.activity.MemoryDayActivity;
