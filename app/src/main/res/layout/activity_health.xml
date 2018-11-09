@@ -46,6 +46,7 @@
             android:textSize="30dp" />
 
         <TextView
+            android:id="@+id/dog_BMI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -53,7 +54,7 @@
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/dog_BMI"
+            android:id="@+id/dog_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -92,7 +93,7 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/dog_temperature"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -125,10 +126,12 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#b3b8ff"></View>
+        android:background="#b3b8ff"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rcv_health"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

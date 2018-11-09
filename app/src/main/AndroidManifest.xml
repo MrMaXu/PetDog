@@ -58,6 +58,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".activity.SecretActivity" />
         <activity android:name=".activity.LiaogouActivity" />
+<<<<<<< HEAD
         <activity
             android:name=".activity.ActionLauguageActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -72,6 +73,14 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.HealthActivity"
+=======
+        <activity android:name=".activity.ActionLauguageActivity" />
+        <activity android:name=".activity.TrainActicalActivity" />
+        <activity android:name=".activity.MapActivity">
+        </activity>
+        <activity android:name=".activity.SickActivity" />
+        <activity android:name=".activity.HealthActivity"
+>>>>>>> 362806ae3f1072044487e7c490195d94de916c7e
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
     </application>
