@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +37,7 @@ import butterknife.OnClick;
  * Activity：健康监测
  * 描述：第8小块儿：监测宠物的健康情况
  */
-public class HealthActivity extends AppCompatActivity {
+public class HealthActivity extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.dog_height)
     TextView dog_height;
     @BindView(R.id.dog_weight)
@@ -47,12 +48,7 @@ public class HealthActivity extends AppCompatActivity {
     TextView dog_temperature;
     @BindView(R.id.dog_inputData)
     Button dog_inputData;
-    @BindView(R.id.dog_inputHeight)
-    EditText dog_inputHeight;
-    @BindView(R.id.dog_inputWeight)
-    EditText dog_inputWeight;
-    @BindView(R.id.dog_inputTemperature)
-    EditText dog_inputTemperature;
+
     private ArrayList<Dog> list;
     private ListHealthAdapter listHealthAdapter;
     @BindView(R.id.rcv_health)
@@ -77,6 +73,7 @@ public class HealthActivity extends AppCompatActivity {
         recyclerView.setAdapter(listHealthAdapter);
         listHealthAdapter.openLoadAnimation();
 
+        dog_inputData.setOnClickListener(this);
 
     }
 
@@ -94,54 +91,8 @@ public class HealthActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 break;
-
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @OnClick(R.id.dog_inputData)
-    public void setDog_inputData() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(HealthActivity.this);
-        builder.setView(R.layout.diglog_health);
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-    }
-
-    @OnClick({R.id.dog_inputData, R.id.dog_inputHeight, R.id.dog_inputWeight, R.id.dog_inputTemperature, R.id.dogData_submit, R.id.dogData_cancle})
-    public void setDogData(View v) {
-        switch (v.getId()) {
-            case R.id.dog_inputData:
-                final AlertDialog.Builder builder = new AlertDialog.Builder(HealthActivity.this);
-                builder.setView(R.layout.diglog_health);
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-                break;
-//          case R.id.dog_inputHeight:
-//                break;
-//            case R.id.dog_inputWeight:
-//                break;
-//            case R.id.dog_inputTemperature:
-//                break;
-            case R.id.dogData_submit:
-                String str_dog_inputHeight = dog_inputHeight.getText().toString();
-                String str_dog_inputWeight = dog_inputWeight.getText().toString();
-                String str_dog_inputTemperature = dog_inputTemperature.getText().toString();
-                dog_height.setText(str_dog_inputHeight);
-                dog_weight.setText(str_dog_inputWeight);
-                dog_temperature.setText(str_dog_inputTemperature);
-                getTime();
-                //计算BMI
-                Dog dogData = new Dog();
-                dogData.setDog_height(formatString(str_dog_inputHeight));
-                dogData.setDog_weight(formatString(str_dog_inputWeight));
-                dogData.setDog_temperature(formatString(str_dog_inputTemperature));
-                dogData.save();
-
-                break;
-            case R.id.dogData_cancle:
-                break;
-
-        }
     }
 
     //将String数据格式化为float，且保留一位小数
@@ -162,5 +113,54 @@ public class HealthActivity extends AppCompatActivity {
             list.add(dog);
         }
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.dog_inputData){
+            final AlertDialog.Builder builder = new AlertDialog.Builder(HealthActivity.this);
+            View dialogView = LayoutInflater.from(this).inflate(R.layout.diglog_health,null);
+            builder.setView(dialogView);
+            final AlertDialog alertDialog = builder.create();
+
+
+            //身高、体重、体温
+            final EditText dog_inputHeight =(EditText) dialogView.findViewById(R.id.dog_inputHeight);
+            final EditText dog_inputWeight =(EditText) dialogView.findViewById(R.id.dog_inputWeight);
+            final EditText dog_inputTemperature =(EditText) dialogView.findViewById(R.id.dog_inputTemperature);
+            //对话框确定、取消按钮
+            Button dogDataSubmit = (Button) dialogView.findViewById(R.id.dogData_submit);
+            Button dogDataCancle = (Button) dialogView.findViewById(R.id.dogData_cancle);
+            //确定按钮监听
+            dogDataSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //计算
+                    String str_dog_inputHeight = dog_inputHeight.getText().toString();
+                    String str_dog_inputWeight = dog_inputWeight.getText().toString();
+                    String str_dog_inputTemperature = dog_inputTemperature.getText().toString();
+
+                    dog_height.setText(str_dog_inputHeight);
+                    dog_weight.setText(str_dog_inputWeight);
+                    dog_temperature.setText(str_dog_inputTemperature);
+                    getTime();
+                    //计算BMI
+                    Dog dogData = new Dog();
+                    dogData.setDog_height(formatString(str_dog_inputHeight));
+                    dogData.setDog_weight(formatString(str_dog_inputWeight));
+                    dogData.setDog_temperature(formatString(str_dog_inputTemperature));
+                    dogData.save();
+                    alertDialog.dismiss();
+                }
+            });
+            dogDataCancle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialog.dismiss();
+                }
+            });
+            alertDialog.show();
+        }
     }
 }

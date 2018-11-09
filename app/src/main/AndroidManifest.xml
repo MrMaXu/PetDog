@@ -62,7 +62,8 @@
         <activity android:name=".activity.MapActivity">
         </activity>
         <activity android:name=".activity.SickActivity" />
-        <activity android:name=".activity.HealthActivity" />
+        <activity android:name=".activity.HealthActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
     </application>
 

@@ -89,7 +89,7 @@ public class IndexFragment extends Fragment {
                         startActivity(new Intent(getActivity(),SickActivity.class));
                         break;
                     case 7:
-                        startActivity(new Intent(getActivity(),HealthDateItem.class));
+                        startActivity(new Intent(getActivity(),HealthActivity.class));
                         break;
                 }
             }
