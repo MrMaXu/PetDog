@@ -2,12 +2,13 @@
 <litepal>
     <dbname value="PetDogDB" ></dbname><!--dbname代表数据库的名字-->
 
-    <version value="2" ></version><!--数据库的版本号-->
+    <version value="4" ></version><!--数据库的版本号-->
 
     <list>
         <mapping class="com.thousand.petdog.model.Dog"></mapping>
         <mapping class="com.thousand.petdog.model.User"></mapping>
         <mapping class="com.thousand.petdog.model.MemoryDay"></mapping>
         <mapping class="com.thousand.petdog.model.SortModel"></mapping>
+        <mapping class="com.thousand.petdog.model.Article"></mapping>
     </list>
 </litepal>

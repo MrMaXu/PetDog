@@ -8,18 +8,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.thousand.petdog.R;
 import com.thousand.petdog.activity.ActionLauguageActivity;
-import com.thousand.petdog.activity.HealthActivity;
 import com.thousand.petdog.activity.LiaogouActivity;
 import com.thousand.petdog.activity.MapActivity;
 import com.thousand.petdog.activity.MemoryDayActivity;
 import com.thousand.petdog.activity.SecretActivity;
 import com.thousand.petdog.activity.SickActivity;
-import com.thousand.petdog.activity.TrainActicalActivity;
+import com.thousand.petdog.activity.TrainArticleActivity;
 import com.thousand.petdog.adapter.GridItemAdapter;
 import com.thousand.petdog.bean.HealthDateItem;
 import com.thousand.petdog.bean.NavgationItem;
@@ -80,7 +78,7 @@ public class IndexFragment extends Fragment {
                         startActivity(new Intent(getActivity(),ActionLauguageActivity.class));
                         break;
                     case 4:
-                        startActivity(new Intent(getActivity(),TrainActicalActivity.class));
+                        startActivity(new Intent(getActivity(),TrainArticleActivity.class));
                         break;
                     case 5:
                         startActivity(new Intent(getActivity(),MapActivity.class));
