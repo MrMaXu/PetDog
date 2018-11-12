@@ -34,7 +34,7 @@ public class TrainArticleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_train_article);
         ButterKnife.bind(this);
         //设置标题栏
-        Toolbar tb_memday_index = findViewById(R.id.tb_memday_index);
+        Toolbar tb_memday_index = findViewById(R.id.tb_train_article);
         tb_memday_index.setTitle("训练宝典");
         setSupportActionBar(tb_memday_index);
 

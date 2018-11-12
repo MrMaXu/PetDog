@@ -5,12 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_memday_index"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
 
-    </android.support.v7.widget.Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="300px"
@@ -18,7 +13,6 @@
 
         <com.thousand.petdog.view.roundImageView
             android:layout_width="100dp"
-
             android:layout_height="100dp"
             android:layout_centerInParent="true"
             android:layout_marginLeft="20dp"
@@ -32,9 +26,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="160px"
             android:background="@drawable/round_border_map_search"
-            android:gravity="center"
             android:text="用户名"
-            android:textSize="20dp" />
+            android:textSize="16dp" />
     </LinearLayout>
 
     <View

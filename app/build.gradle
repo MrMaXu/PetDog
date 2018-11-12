@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+// 注册MobSDK
+apply plugin: 'com.mob.sdk'
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -45,9 +46,9 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     //mob集成
     // implementation 'com.mob.sdk:MobSDK:+'
-    implementation files('libs/MobCommons-2018.1011.1129.jar')
-    implementation files('libs/MobTools-2018.1009.1056.jar')
-    implementation files('libs/SDKWrapper-2018.0801.1824.jar')
+//    implementation files('libs/MobCommons-2018.1011.1129.jar')
+//    implementation files('libs/MobTools-2018.1009.1056.jar')
+//    implementation files('libs/SDKWrapper-2018.0801.1824.jar')
     implementation files('libs/SMSSDK-3.2.1.jar')
     //高德地图 3D地图 搜索 定位
     implementation 'com.amap.api:3dmap:latest.integration'
@@ -61,4 +62,14 @@ dependencies {
     implementation 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
     //调色板
     implementation 'com.github.QuadFlask:colorpicker:0.0.13'
+    //包管理
+    implementation 'com.android.support:multidex:1.0.3'
+}
+// 在MobSDK的扩展中注册ShopSDK的相关信息
+MobSDK {
+    appKey "2893387ac6ea5"
+    appSecret "1ee290da89ce3bb3376e6df1a70a1d10"
+
+    //商城SDK
+    ShopSDK {}
 }

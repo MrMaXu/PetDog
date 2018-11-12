@@ -108,6 +108,7 @@ public class MainActivity extends Activity  implements View.OnClickListener{
                 }else{
                     fTransaction.show(fg1);
                 }
+                txt_topbar.setText("欢迎");
                 break;
                 //第二个FG，发现
             case R.id.txt_message:
@@ -119,6 +120,7 @@ public class MainActivity extends Activity  implements View.OnClickListener{
                 }else{
                     fTransaction.show(fg2);
                 }
+                txt_topbar.setText("发现");
                 break;
                 //第三个FG，商城
             case R.id.txt_better:
@@ -130,6 +132,7 @@ public class MainActivity extends Activity  implements View.OnClickListener{
                 }else{
                     fTransaction.show(fg3);
                 }
+                txt_topbar.setText("商城");
                 break;
                 //第四个FG，我的
             case R.id.txt_setting:
@@ -141,6 +144,7 @@ public class MainActivity extends Activity  implements View.OnClickListener{
                 }else{
                     fTransaction.show(fg4);
                 }
+                txt_topbar.setText("我的");
                 break;
         }
         fTransaction.commit();

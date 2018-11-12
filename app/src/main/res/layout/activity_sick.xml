@@ -6,7 +6,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true">
 
-    <com.xp.sortrecyclerview.ClearEditText
+    <com.thousand.petdog.util.ClearEditText
         android:id="@+id/filter_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
             android:textSize="30dp"
             android:visibility="invisible" />
 
-        <com.xp.sortrecyclerview.SideBar
+        <com.thousand.petdog.view.SideBar
             android:id="@+id/sideBar"
             android:layout_width="30dp"
             android:layout_height="match_parent"

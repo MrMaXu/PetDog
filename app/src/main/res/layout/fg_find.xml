@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
    >
-    <LinearLayout
+
+    <com.thousand.petdog.util.ClearEditText
+        android:id="@+id/filter_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:paddingLeft="8dp"
+        android:drawableLeft="@drawable/ic_search_black_24dp"
+        android:hint="搜索..."
+        android:maxLines="1"
+        android:textSize="15dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:textSize="40dp"
-            android:text="发现模块"/>
-    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_10"
+        android:id="@+id/rv_findfragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+    </android.support.v7.widget.RecyclerView>
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_findfragment_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>
