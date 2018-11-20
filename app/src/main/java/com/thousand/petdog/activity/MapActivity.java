@@ -102,7 +102,7 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         //初始化地图中的手势
         initMapFunction();
         //输入自动提示
-        inputtips.setInputtipsListener(this);
+       // inputtips.setInputtipsListener(this);
     }
 
 
@@ -161,7 +161,7 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         mLocationOption.setOnceLocationLatest(true);
 
         // 设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
-        myLocationStyle.interval(2000);
+      //  myLocationStyle.interval(2000);
 
         //设置定位蓝点的Style
         aMap.setMyLocationStyle(myLocationStyle);
