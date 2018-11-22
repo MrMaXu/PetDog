@@ -101,7 +101,6 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
 
         //初始化地图中的手势
         initMapFunction();
-        inputtips = new Inputtips(MapActivity.this, inputquery);//定义一个输入提示对象，传入当前上下文和搜索对象
         //输入自动提示
         inputtips.setInputtipsListener(this);
     }
@@ -131,7 +130,7 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         // --------二：定位步骤5-------------显示默认的定位按钮
         mUiSettings.setMyLocationButtonEnabled(true);
         //  --------二：定位步骤6-------------可触发定位并显示当前位置
-//        aMap.setMyLocationEnabled(true);
+        aMap.setMyLocationEnabled(true);
         // --------二：定位步骤7-------------初始化定位
         mLocationClient = new AMapLocationClient(getApplicationContext());
         //--------二：定位步骤8-------------设置定位回调监听
@@ -161,23 +160,19 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         //设置setOnceLocationLatest(boolean b)接口为true，启动定位时SDK会返回最近3s内精度最高的一次定位结果。如果设置其为true，setOnceLocation(boolean b)接口也会被设置为true，反之不会，默认为false。
         mLocationOption.setOnceLocationLatest(true);
 
-
-
-
-        //初始化定位蓝点样式类
-        myLocationStyle = new MyLocationStyle();
         // 设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
         myLocationStyle.interval(2000);
+
         //设置定位蓝点的Style
         aMap.setMyLocationStyle(myLocationStyle);
-        //设置默认定位按钮是否显示，非必需设置
-        mUiSettings.setMyLocationButtonEnabled(true);
+        //初始化定位蓝点样式类
+        myLocationStyle = new MyLocationStyle();
+        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);
         // 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         aMap.setMyLocationEnabled(true);
         // 连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）
         // 如果不设置myLocationType，默认也会执行此种模式。
-        //定位蓝点展现模式
-        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);
+
     }
 
 
@@ -195,6 +190,8 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
                 onDestroy();
                 finish();
                 break;
+
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -237,6 +234,8 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
             case R.id.tv_left_button:
                 finish();
                 break;
+
+
         }
     }
 
@@ -267,7 +266,7 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
                 String content = charSequence.toString().trim();//获取自动提示输入框的内容
                 inputquery = new InputtipsQuery(content, "");
                 inputquery.setCityLimit(true);//限制在当前城市
-
+                inputtips = new Inputtips(MapActivity.this, inputquery);//定义一个输入提示对象，传入当前上下文和搜索对象
                 inputtips.setInputtipsListener(MapActivity.this);//设置输入提示查询的监听，实现输入提示的监听方法onGetInputtips()
                 inputtips.requestInputtipsAsyn();//输入查询提示的异步接口实现
 

@@ -13,14 +13,15 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="300px"
-            android:src="@drawable/round_border" />
+            android:layout_height="400px"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_qinwen" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:text="狗狗已经健康成长X天" />
+            android:text="狗狗已经健康成长3天" />
 
     </LinearLayout>
 
@@ -33,7 +34,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/round_border"
+        android:src="@drawable/bg_juhua"
+        android:scaleType="fitXY"
         />
 
 </LinearLayout>

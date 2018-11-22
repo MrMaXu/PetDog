@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300px"
+        android:layout_height="350px"
         android:orientation="horizontal">
 
         <com.thousand.petdog.view.roundImageView
@@ -16,7 +16,8 @@
             android:layout_height="100dp"
             android:layout_centerInParent="true"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="100px"
+            android:layout_marginTop="50px"
+            android:layout_marginBottom="30dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_background" />
 
@@ -38,8 +39,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150px"
+        android:layout_height="180px"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+
         android:orientation="horizontal">
 
         <com.thousand.petdog.view.roundImageView
@@ -65,6 +70,7 @@
             android:layout_height="100dp"
             android:layout_centerInParent="true"
             android:layout_marginLeft="50dp"
+            android:layout_marginRight="30dp"
             android:layout_weight="1"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_background" />
