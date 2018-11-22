@@ -6,20 +6,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.thousand.petdog.R;
+import com.thousand.petdog.bean.NavgationItem;
 
 import java.util.List;
 
 public class FinddogNaviAdapter extends RecyclerView.Adapter<FinddogNaviAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<String> mStringList;
-    public FinddogNaviAdapter(Context context, List<String> list) {
+    private List<NavgationItem> mNavgationItemList;
+    public FinddogNaviAdapter(Context context, List<NavgationItem> list) {
         this.mContext = context;
-        this.mStringList = list;
+        this.mNavgationItemList = list;
     }
 
     @NonNull
@@ -32,28 +34,31 @@ public class FinddogNaviAdapter extends RecyclerView.Adapter<FinddogNaviAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        final String s = mStringList.get(i);
-        myViewHolder.textView.setText(s);
+        final NavgationItem navgationItem = mNavgationItemList.get(i);
+        myViewHolder.imageView.setImageResource(navgationItem.getNavgationImg());
+        myViewHolder.textView.setText(navgationItem.getNavgationName());
         myViewHolder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext,s,Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,navgationItem.getNavgationName(),Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return mStringList.size();
+        return mNavgationItemList.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
+        ImageView imageView;
         TextView textView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.item_dogfind_naviname);
+            imageView = itemView.findViewById(R.id.item_dogfind_naviimg);
         }
     }
 }

@@ -23,7 +23,11 @@ public class FinddogItemAdapter extends BaseQuickAdapter<FinddogItem,BaseViewHol
     protected void convert(BaseViewHolder helper, FinddogItem item) {
         Glide.with(mContext).load(item.getUserImg()).into((ImageView) helper.getView(R.id.img_dogitem_userimg));
         helper.setText(R.id.tv_dogitem_username,item.getUserName());
-        helper.setText(R.id.tv_dogitem_content,item.getContent());
+        String content = item.getContent();
+        if (content.length() > 40){
+            content = content.substring(0,40)+"...";
+        }
+        helper.setText(R.id.tv_dogitem_content,content);
         //itemContent图片
         List<Integer> contentImgList = item.getContentImgList();
         GridLayout gridLayout = helper.getView(R.id.gridlayout_content_imgs);

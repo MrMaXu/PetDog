@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.thousand.petdog.R;
 import com.thousand.petdog.activity.ActionLauguageActivity;
+import com.thousand.petdog.activity.BaiduLocateActivity;
 import com.thousand.petdog.activity.HealthActivity;
 import com.thousand.petdog.activity.LiaogouActivity;
 import com.thousand.petdog.activity.MapActivity;
@@ -70,7 +71,7 @@ public class IndexFragment extends Fragment {
                         startActivity(new Intent(getActivity(),MemoryDayActivity.class));
                         break;
                     case 1:
-                        startActivity(new Intent(getActivity(),SecretActivity.class));
+                        startActivity(new Intent(getActivity(),BaiduLocateActivity.class));
                         break;
                     case 2:
                         startActivity(new Intent(getActivity(),LiaogouActivity.class));
@@ -97,14 +98,14 @@ public class IndexFragment extends Fragment {
     }
 
     private void initList() {
-        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"纪念日"));
-        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"秘密"));
-        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"撩汪"));
-        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"动作"));
-        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"训练"));
-        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"地图"));
-        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"病种百科"));
-        mItemList.add(new NavgationItem(R.drawable.ic_launcher_background,"健康监控"));
+        mItemList.add(new NavgationItem(R.drawable.d1,"纪念日"));
+        mItemList.add(new NavgationItem(R.drawable.d2,"秘密"));
+        mItemList.add(new NavgationItem(R.drawable.d3,"撩汪"));
+        mItemList.add(new NavgationItem(R.drawable.d4,"动作"));
+        mItemList.add(new NavgationItem(R.drawable.d5,"训练"));
+        mItemList.add(new NavgationItem(R.drawable.d6,"地图"));
+        mItemList.add(new NavgationItem(R.drawable.d7,"病种百科"));
+        mItemList.add(new NavgationItem(R.drawable.d8,"健康监控"));
     }
 
     @Override

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.thousand.petdog">
 
+    <!--读取设备硬件信息，统计数据-->
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <!-- 允许程序读写手机状态和身份 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -14,17 +16,18 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 允许程序打开网络套接字 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-    <!--用于访问GPS定位-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    <!--用于申请调用A-GPS模块-->
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+    <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于申请调用A-GPS模块 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -40,8 +43,14 @@
         <!-- 地图 -->
         <meta-data
             android:name="PetDog_Map"
-            android:value="b5f58c9abe9ea3a41b5410e2c83c9567"></meta-data>
-        <service android:name="com.amap.api.location.APSService"></service>
+            android:value="b5f58c9abe9ea3a41b5410e2c83c9567" />
+
+        <!--百度地图-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="hyFUzdmf09sEz0Q8FFHaZEgRhFg4NvUo" />
+
+        <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -59,25 +68,22 @@
             android:name=".activity.sub_activity.AddMemoryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".activity.SecretActivity" />
-        <activity android:name=".activity.LiaogouActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            />
         <activity
-            android:name=".activity.ActionLauguageActivity"
-            />
+            android:name=".activity.LiaogouActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.ActionLauguageActivity" />
         <activity
             android:name=".activity.TrainArticleActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".activity.MapActivity"
-        ></activity>
+        <activity android:name=".activity.MapActivity" />
         <activity
             android:name=".activity.SickActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.HealthActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
+        <activity android:name=".activity.BaiduLocateActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

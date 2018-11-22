@@ -17,6 +17,7 @@ import com.thousand.petdog.R;
 import com.thousand.petdog.adapter.FinddogItemAdapter;
 import com.thousand.petdog.adapter.FinddogNaviAdapter;
 import com.thousand.petdog.bean.FinddogItem;
+import com.thousand.petdog.bean.NavgationItem;
 import com.thousand.petdog.util.ClearEditText;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class FindFragment extends Fragment {
     @BindView(R.id.rv_findfragment_info)
     RecyclerView recyclerFindfragmentInfo;
     private String content;
-    private List<String> mStringlList = new ArrayList<>();
+    private List<NavgationItem> mNavgationItemlList = new ArrayList<>();
     private List<FinddogItem> mFinddogItemList = new ArrayList<>();
     private GridLayoutManager gridLayoutManager;
     private LinearLayoutManager linearLayoutManager;
@@ -53,10 +54,10 @@ public class FindFragment extends Fragment {
     }
 
     private void initData() {
-        mStringlList.add("寄养");
-        mStringlList.add("配对");
-        mStringlList.add("领养");
-        mStringlList.add("分享");
+        mNavgationItemlList.add(new NavgationItem(R.drawable.d11,"寄养"));
+        mNavgationItemlList.add(new NavgationItem(R.drawable.d12,"配对"));
+        mNavgationItemlList.add(new NavgationItem(R.drawable.d13,"领养"));
+        mNavgationItemlList.add(new NavgationItem(R.drawable.d14,"分享"));
 
         for (int j=0;j<5;j++){
             FinddogItem finddogItem = new FinddogItem();
@@ -65,8 +66,6 @@ public class FindFragment extends Fragment {
             finddogItem.setContent(getResources().getString(R.string.test_text));
 
             List<Integer> list = new ArrayList<>();
-            list.add(R.drawable.p1);
-            list.add(R.drawable.ic_star_black_24dp);
             list.add(R.drawable.ic_star_black_24dp);
             finddogItem.setContentImgList(list);
 
@@ -81,7 +80,7 @@ public class FindFragment extends Fragment {
 
         gridLayoutManager = new GridLayoutManager(getActivity(), 4);
         recyclerViewFindFragment.setLayoutManager(gridLayoutManager);
-        FinddogNaviAdapter adapter = new FinddogNaviAdapter(getActivity(), mStringlList);
+        FinddogNaviAdapter adapter = new FinddogNaviAdapter(getActivity(), mNavgationItemlList);
         recyclerViewFindFragment.setAdapter(adapter);
 
         linearLayoutManager = new LinearLayoutManager(getActivity());
