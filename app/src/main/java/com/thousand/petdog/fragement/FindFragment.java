@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class FindFragment extends Fragment {
+public class FindFragment extends android.support.v4.app.Fragment {
 
     @BindView(R.id.filter_edit)
     ClearEditText filterEdit;
@@ -59,14 +59,15 @@ public class FindFragment extends Fragment {
         mNavgationItemlList.add(new NavgationItem(R.drawable.d13,"领养"));
         mNavgationItemlList.add(new NavgationItem(R.drawable.d14,"分享"));
 
-        for (int j=0;j<5;j++){
+        for (int j=0;j<2;j++){
             FinddogItem finddogItem = new FinddogItem();
             finddogItem.setUserName("lql");
-            finddogItem.setUserImg(R.drawable.ic_search_black_24dp);
+            finddogItem.setUserImg(R.drawable.p1);
             finddogItem.setContent(getResources().getString(R.string.test_text));
 
             List<Integer> list = new ArrayList<>();
-            list.add(R.drawable.ic_star_black_24dp);
+            list.add(R.drawable.d12);
+            list.add(R.drawable.d11);
             finddogItem.setContentImgList(list);
 
             mFinddogItemList.add(finddogItem);
@@ -110,6 +111,32 @@ public class FindFragment extends Fragment {
                     });
                 }else if (id == R.id.tv_dogitem_content){
 
+                }else if (id == R.id.tb_zump){
+                    ToggleButton zumpToogle = view.findViewById(R.id.tb_zump);
+                    zumpToogle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                            if (b){
+                                Toast.makeText(getActivity(),"赞一个",Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(getActivity(),"嘁~",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }else if (id == R.id.tb_shoucang){
+                    ToggleButton shoucangToogle = view.findViewById(R.id.tb_shoucang);
+                    shoucangToogle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                            if (b){
+                                Toast.makeText(getActivity(),"已收藏",Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(getActivity(),"告辞。",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }else if (id == R.id.tb_zhaunfa){
+                    Toast.makeText(getActivity(),"转发",Toast.LENGTH_SHORT).show();
                 }
             }
         });

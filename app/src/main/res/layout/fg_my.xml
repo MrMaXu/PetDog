@@ -4,140 +4,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <LinearLayout
+    <View
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="350px"
+        android:layout_height="20dp"/>
+
+    <include layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <com.thousand.petdog.view.roundImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_centerInParent="true"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="50px"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/p1" />
 
         <TextView
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="160px"
-            android:background="@drawable/round_border_map_search"
-            android:text="用户名"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:text="快乐起来"
             android:textSize="16dp" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="#b3b8ff"></View>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="180px"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-
-        android:orientation="horizontal">
-
-        <com.thousand.petdog.view.roundImageView
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="90dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background" />
-
-        <com.thousand.petdog.view.roundImageView
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="50dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background" />
-
-        <com.thousand.petdog.view.roundImageView
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#b3b8ff"></View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="购物车"
-            android:textSize="20dp" />
 
-        <View
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#b3b8ff"></View>
+            android:layout_height="wrap_content">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#b3b8ff"></View>
+            <TextView
+                style="@style/my_item"
+                android:drawableLeft="@drawable/shangcheng"
+                android:text="  商城" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="我的关注"
-            android:textSize="20dp" />
+            <ImageView style="@style/my_item_img" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#b3b8ff"></View>
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="设置"
-            android:textSize="20dp" />
+        <include layout="@layout/my_decorate"/>
 
-        <View
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#b3b8ff"></View>
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="关于软件"
-            android:textSize="20dp" />
+            <TextView
+                style="@style/my_item"
+                android:drawableLeft="@drawable/gouwuche"
+                android:text="  购物车" />
 
-        <View
+            <ImageView style="@style/my_item_img" />
+
+        </LinearLayout>
+
+        <include layout="@layout/my_decorate"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#b3b8ff"></View>
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/my_item"
+                android:drawableLeft="@drawable/shoucang"
+                android:text="  我的关注" />
+
+            <ImageView style="@style/my_item_img" />
+
+        </LinearLayout>
+
+        <include layout="@layout/my_decorate"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/my_item"
+                android:drawableLeft="@drawable/setting"
+                android:text="  设置"
+                />
+
+            <ImageView style="@style/my_item_img" />
+
+        </LinearLayout>
+
+        <include layout="@layout/my_decorate"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/my_item"
+                android:drawableLeft="@drawable/geren"
+                android:text="  关于软件"
+                />
+
+            <ImageView style="@style/my_item_img" />
+
+        </LinearLayout>
+
+        <include layout="@layout/my_decorate"/>
     </LinearLayout>
 </LinearLayout>

@@ -3,39 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/bg_123"
+    android:fitsSystemWindows="true"
+    >
 
-    <LinearLayout
-        android:id="@+id/top"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <ImageView
+        <android.support.v7.widget.Toolbar
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/index_fragment_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="400px"
-            android:scaleType="fitXY"
-            android:src="@drawable/bg_qinwen" />
+            android:layout_height="?attr/actionBarSize">
+        </android.support.v7.widget.Toolbar>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="狗狗已经健康成长3天" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:background="#00000000"
         android:id="@+id/rv_fg_index"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        >
+    </android.support.v7.widget.RecyclerView>
 
-        ></android.support.v7.widget.RecyclerView>
-    <ImageView
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/bg_juhua"
-        android:scaleType="fitXY"
-        />
+        android:layout_height="60dp"/>
 
 </LinearLayout>
+
+    <!--<LinearLayout
+          android:id="@+id/top"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+          <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="400px"
+              android:scaleType="fitXY"
+              android:src="@drawable/bg_qinwen" />
+
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="right"
+              android:text="狗狗已经健康成长3天" />
+
+      </LinearLayout>-->

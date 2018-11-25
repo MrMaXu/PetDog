@@ -48,7 +48,7 @@
                 android:text="test"
                 android:id="@+id/tv_dogitem_content"
                 android:layout_width="match_parent"
-                android:layout_height="80dp" />
+                android:layout_height="wrap_content" />
 
                 <GridLayout
                     android:id="@+id/gridlayout_content_imgs"
@@ -58,6 +58,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:id="@+id/img1"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:scaleType="fitXY"
+                        />
+
+                    <ImageView
+                        android:scaleType="fitXY"
+                        android:id="@+id/img2"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        />
 
                 </GridLayout>
 
@@ -76,21 +91,28 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp" />
 
-                    <ImageView
+                    <ToggleButton
+                        android:id="@+id/tb_zump"
+                        android:button="@drawable/toggle_zump"
+                        android:background="@drawable/toggle_zump"
                         android:layout_marginLeft="@dimen/dp_10"
-                        android:src="@drawable/ic_star_black_24dp"
+                        android:checked="false"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp" />
+
+                    <ToggleButton
+                        android:id="@+id/tb_shoucang"
+                        android:button="@drawable/toggle_shoucang"
+                        android:background="@drawable/toggle_shoucang"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:checked="false"
                         android:layout_width="24dp"
                         android:layout_height="24dp" />
 
                     <ImageView
+                        android:id="@+id/tb_zhaunfa"
                         android:layout_marginLeft="@dimen/dp_10"
-                        android:src="@drawable/ic_star_black_24dp"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp" />
-
-                    <ImageView
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:src="@drawable/ic_star_black_24dp"
+                        android:src="@drawable/zhaunfa"
                         android:layout_width="24dp"
                         android:layout_height="24dp" />
 
