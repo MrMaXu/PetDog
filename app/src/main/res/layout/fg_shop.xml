@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:textSize="40dp"
-            android:text="商城模块"/>
+           />
     </LinearLayout>
 
 

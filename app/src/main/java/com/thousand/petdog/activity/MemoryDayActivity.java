@@ -51,20 +51,28 @@ public class MemoryDayActivity extends AppCompatActivity {
         //返回三角
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initListData();         //初始化数据
+
         initView();
+
+    }
+
+    @Override
+    protected void onResume() {
+        mMemoryDayList = LitePal.findAll(MemoryDay.class);      //数据库中查找MemoryDay所有数据
+        super.onResume();
 
     }
 
     private void initView() {
         mLinearLayoutManager = new LinearLayoutManager(this);
         rvMemory.setLayoutManager(mLinearLayoutManager);
-        MemoryAdapter memoryAdapter = new MemoryAdapter(R.layout.item_linear_img_text,mMemoryDayList);
+        MemoryAdapter memoryAdapter = new MemoryAdapter(R.layout.item_linear_img_text, mMemoryDayList);
         //点击单项进行修改
         memoryAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent = new Intent(MemoryDayActivity.this,AddMemoryActivity.class);
-                intent.putExtra(MEMORY_DATE,mMemoryDayList.get(position).getDate());        //传递时间值
+                Intent intent = new Intent(MemoryDayActivity.this, AddMemoryActivity.class);
+                intent.putExtra(MEMORY_DATE, mMemoryDayList.get(position).getDate());        //传递时间值
                 startActivity(intent);
             }
         });

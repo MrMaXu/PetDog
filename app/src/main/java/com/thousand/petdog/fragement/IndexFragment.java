@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.thousand.petdog.R;
@@ -23,6 +24,7 @@ import com.thousand.petdog.activity.HealthActivity;
 import com.thousand.petdog.activity.LiaogouActivity;
 import com.thousand.petdog.activity.MapActivity;
 import com.thousand.petdog.activity.MemoryDayActivity;
+import com.thousand.petdog.activity.ShopActivity;
 import com.thousand.petdog.activity.SickActivity;
 import com.thousand.petdog.activity.TrainArticleActivity;
 import com.thousand.petdog.adapter.GridItemAdapter;
@@ -88,7 +90,9 @@ public class IndexFragment extends Fragment {
                         startActivity(new Intent(getActivity(), MemoryDayActivity.class));
                         break;
                     case 1:
-                        startActivity(new Intent(getActivity(), BaiduLocateActivity.class));
+                       // Toast.makeText(getActivity(),"该功能正在开发中",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getActivity(), ShopActivity.class));
+
                         break;
                     case 2:
                         startActivity(new Intent(getActivity(), LiaogouActivity.class));
@@ -100,7 +104,8 @@ public class IndexFragment extends Fragment {
                         startActivity(new Intent(getActivity(), TrainArticleActivity.class));
                         break;
                     case 5:
-                        startActivity(new Intent(getActivity(), MapActivity.class));
+                       // startActivity(new Intent(getActivity(), BaiduLocateActivity.class));
+                         startActivity(new Intent(getActivity(), MapActivity.class));
                         break;
                     case 6:
                         startActivity(new Intent(getActivity(), SickActivity.class));
@@ -116,7 +121,7 @@ public class IndexFragment extends Fragment {
 
     private void initList() {
         mItemList.add(new NavgationItem(R.drawable.d12, "纪念日"));
-        mItemList.add(new NavgationItem(R.drawable.d11, "秘密"));
+        mItemList.add(new NavgationItem(R.drawable.d11, "商城"));
         mItemList.add(new NavgationItem(R.drawable.d13, "撩汪"));
         mItemList.add(new NavgationItem(R.drawable.d14, "动作"));
         mItemList.add(new NavgationItem(R.drawable.d15, "训练"));

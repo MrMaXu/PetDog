@@ -6,14 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
@@ -56,7 +60,7 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
     private MyLocationStyle myLocationStyle;
     private UiSettings mUiSettings;//定义一个UiSettings对象
     private InputtipsQuery inputquery;
-    private Inputtips inputtips;
+    private Inputtips inputtips = null;
     private PoiSearch.Query query;
     private ListView lv_address;
     private PoiSearch poiSearch;
@@ -102,7 +106,7 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         //初始化地图中的手势
         initMapFunction();
         //输入自动提示
-        inputtips.setInputtipsListener(this);
+        //    inputtips.setInputtipsListener(this);
     }
 
 
@@ -111,7 +115,18 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         et_search = (EditText) findViewById(R.id.et_search);
         lv_address = (ListView) findViewById(R.id.lv_address);
         lv_address.setAdapter(adapter);
-
+        et_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEND
+                        || actionId == EditorInfo.IME_ACTION_DONE
+                        || (event != null && KeyEvent.KEYCODE_ENTER == event.getKeyCode() && KeyEvent.ACTION_DOWN == event.getAction())) {
+                    //处理事件
+                    Toast.makeText(getApplicationContext(), "功能正在开发中", Toast.LENGTH_SHORT);
+                }
+                return false;
+            }
+        });
     }
 
     public void initMapFunction() {
@@ -161,7 +176,7 @@ public class MapActivity extends Activity implements PoiSearch.OnPoiSearchListen
         mLocationOption.setOnceLocationLatest(true);
 
         // 设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
-        myLocationStyle.interval(2000);
+        //  myLocationStyle.interval(2000);
 
         //设置定位蓝点的Style
         aMap.setMyLocationStyle(myLocationStyle);

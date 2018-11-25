@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.thousand.petdog.R;
@@ -47,8 +49,25 @@ public class SickActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sick);
         initViews();
-    }
 
+        //设置标题栏
+        Toolbar tb_memday_index = findViewById(R.id.tb_sick);
+        tb_memday_index.setTitle("病种百科");
+        setSupportActionBar(tb_memday_index);
+
+        //返回三角
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            //返回上级Activity
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void initViews() {
         pinyinComparator = new PinyinComparator();
 

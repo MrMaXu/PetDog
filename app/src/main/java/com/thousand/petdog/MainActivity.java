@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     //Fragmengt  首页 发现 商城 我的  1234
     private IndexFragment indexFragment;
     private FindFragment findFragment;
-    private ShopFragment fg3;
+    private ShopFragment shopFragment;
     private MyFragment myFragment;
     private FragmentManager fManager;
 
@@ -61,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
                         lastShowFragment = 1;
                     }
                     return true;
+//                case R.id.navigation_shop:
+//                    if (lastShowFragment != 2) {
+//                        switchFrament(lastShowFragment, 2);
+//                        lastShowFragment = 2;
+//                    }
+//                    return true;
                 case R.id.navigation_tickets:
                     if (lastShowFragment != 2) {
                         switchFrament(lastShowFragment, 2);
@@ -86,8 +92,10 @@ public class MainActivity extends AppCompatActivity {
     private void initFragments() {
         indexFragment = new IndexFragment();
         findFragment = new FindFragment();
+        //shopFragment=new ShopFragment();
         myFragment = new MyFragment();
         fragments = new Fragment[]{indexFragment,findFragment,myFragment};
+      //  fragments = new Fragment[]{indexFragment,findFragment,shopFragment,myFragment};
         lastShowFragment = 0;
         getSupportFragmentManager()
                 .beginTransaction()

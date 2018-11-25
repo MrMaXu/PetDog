@@ -1,10 +1,7 @@
-package com.thousand.petdog.fragement;
+package com.thousand.petdog.activity;
 
-import android.app.Fragment;
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.mob.MobSDK;
 import com.mob.shop.datatype.entity.Order;
@@ -13,24 +10,18 @@ import com.mob.shop.gui.ShopGUI;
 import com.mob.shop.gui.pay.customizedpay.CustomizedPayListener;
 import com.thousand.petdog.R;
 
-
-public class ShopFragment extends android.support.v4.app.Fragment {
-
-    private String content;
-    public ShopFragment() {
-        super();
-    }
+/**
+ * Activity：秘密
+ * 描述：第2小块儿：记录宠物的日常照片
+ */
+public class ShopActivity extends Activity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MobSDK.init(getActivity());
+        setContentView(R.layout.activity_secret);
+        MobSDK.init(this);
 
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fg_shop,container,false);
 
         Callback callback = new Callback() {
             //跳转开发者应用的登录界面，等待用户进行登录操作，登录成功后调用MobSDK.setUser设置登录用户信息
@@ -52,10 +43,10 @@ public class ShopFragment extends android.support.v4.app.Fragment {
                 return super.pay(order, listener);
             }
         };
+
         // 进入商城首页
         ShopGUI.showShopPage(callback);
 
-
-        return view;
     }
+
 }

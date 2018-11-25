@@ -22,23 +22,26 @@
             android:background="@drawable/title_mem_day_zuojiantou"
             android:clickable="@null"
             android:textColor="#0678e9"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:layout_marginTop="7dp"
+            />
 
 
         <EditText
             android:id="@+id/et_search"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_centerInParent="true"
             android:layout_marginTop="7dp"
             android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/round_border_map_search"
             android:drawableLeft="@drawable/map_search"
             android:drawablePadding="8dp"
             android:hint="宠物医院/宠物店"
             android:paddingLeft="10dp"
             android:paddingRight="8dp"
-            android:textSize="10dp" />
+            android:textSize="15dp" />
 
 
     </LinearLayout>
